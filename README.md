@@ -7,10 +7,14 @@ use POST
 PORT_WS is port web_socket
 PORT_SERVER is webhook
 
-    var structWithTags 
-	js, _ := json.Marshal(structWithTags)
-	_, err = http.Post("http://localhost:"+PORT_SERVER, "application/json", bytes.NewReader(js))
+```go
+var structWithTags  str
+s, _ := json.Marshal(structWithTags)
+_, err = http.Post("http://localhost:"+PORT_SERVER, "application/json", bytes.NewReader(js))
+```
 
+
+```yaml
 services:
   backend:
     image: ignaciomagno/pretty-struct-golang-backend:v0.0
@@ -29,4 +33,4 @@ services:
     ports:
       - "3001:3000"
     container_name: pretty-struct-golang-frontend
-  
+```
