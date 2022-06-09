@@ -1,0 +1,11 @@
+FROM node:fermium-alpine3.15
+
+RUN apk update && apk add bash
+
+WORKDIR /
+COPY . /home
+COPY start.sh /
+RUN chmod +x start.sh
+
+# Command to run when starting the container
+CMD ["/start.sh"]

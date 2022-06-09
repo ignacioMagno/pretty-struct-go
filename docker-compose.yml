@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  backend:
+    image: ignaciomagno/pretty-struct-golang-backend
+    environment:
+      - PORT_server=8080
+      - PORT_WS=5050
+    ports:
+      - "8080:8080"
+      - "5050:5050"
+  frontend:
+    image: push ignaciomagno/pretty-struct-golang-frontend
+    environment:
+      - PORT_WS=5050
+    ports:
+      - "3000:3000"
+  
