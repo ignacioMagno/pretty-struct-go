@@ -4,6 +4,12 @@ RUN apk update && apk add bash
 
 WORKDIR /
 COPY . /home
+
+WORKDIR /home
+
+RUN npm install
+
+WORKDIR /
 COPY start.sh /
 RUN chmod +x start.sh
 

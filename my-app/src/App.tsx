@@ -2,15 +2,16 @@ import './App.css';
 import JSONPretty from 'react-json-pretty';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-var port = process.env.PORT_WS
-
+var backend = process.env.REACT_APP_BACKEND_IP
+var ws = process.env.REACT_APP_PORT_WS
 function App() {
   const [json, setJson] = useState<JSON>()
   const [connected, setConnected] = useState(false)
   const socket = useRef<WebSocket | undefined>()
 
   useEffect(() => {
-    socket.current = new WebSocket("ws://localhost:"+port+"/reverse")
+    console.log("ws://" + backend + ":" + ws + "/reverse")
+    socket.current = new WebSocket("ws://" + backend + ":" + ws + "/reverse")
     socket.current.onmessage = function (e: any) {
       setJson(e.data)
     }

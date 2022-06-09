@@ -1,18 +1,19 @@
-version: '3.9'
-
 services:
   backend:
-    image: ignaciomagno/pretty-struct-golang-backend
+    image: ignaciomagno/pretty-struct-golang-backend:v0.0
     environment:
-      - PORT_server=8080
+      - PORT_SERVER=8090
       - PORT_WS=5050
     ports:
-      - "8080:8080"
-      - "5050:5050"
+      - 8090:8090
+      - 5050:5050
+    container_name: pretty-struct-golang-backend
   frontend:
-    image: push ignaciomagno/pretty-struct-golang-frontend
+    image: ignaciomagno/pretty-struct-golang-frontend:v0.0
     environment:
-      - PORT_WS=5050
+      REACT_APP_BACKEND_IP: 192.168.1.99
+      REACT_APP_PORT_WS: 5050
     ports:
-      - "3000:3000"
+      - "3001:3000"
+    container_name: pretty-struct-golang-frontend
   
